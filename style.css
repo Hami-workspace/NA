@@ -303,3 +303,65 @@ body {
         opacity: 1;
     }
 }
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .moon {
+        width: 140px;
+        height: 140px;
+        box-shadow: 30px -5px 0 0 var(--light-gold) !important;
+        transform: rotate(15deg) translateX(-25px) !important;
+    }
+
+    .moon::before {
+        width: 140px;
+        height: 140px;
+        box-shadow: inset 15px -5px 15px rgba(255, 255, 255, 0.2) !important;
+        left: 30px !important;
+    }
+
+    .moon-glow {
+        width: 180px;
+        height: 180px;
+        left: 0 !important;
+    }
+
+    .intro-text h1 {
+        font-size: 2.2rem !important;
+    }
+
+    .intro-text h2 {
+        font-size: 1rem !important;
+        letter-spacing: 2px !important;
+    }
+
+    .typing-heading {
+        font-size: 2rem !important;
+        min-height: 3.5rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+
+    .typing-wish {
+        font-size: 1.1rem !important;
+        margin-bottom: 1.5rem !important;
+        min-height: 5rem !important;
+    }
+
+    .from-text {
+        font-size: 1.6rem !important;
+        max-width: 90% !important;
+    }
+
+    .flower-bouquet-img {
+        width: 160px !important;
+        height: 160px !important;
+    }
+
+    .gift-subtext {
+        font-size: 1rem !important;
+        letter-spacing: 1px !important;
+    }
+
+    .surprise-layer {
+        padding-top: 30px !important;
+    }
+}

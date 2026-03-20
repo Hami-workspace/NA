@@ -1,0 +1,305 @@
+:root {
+    --primary-gold: #ffeb3b;
+    --vibrant-gold: #ffc107;
+    --light-gold: #fff9c4;
+    --navy-dark: #0a0e14;
+    --glass-bg: rgba(255, 255, 255, 0.15);
+    --glass-border: rgba(255, 215, 0, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--navy-dark) url('background.png') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-content {
+    text-align: center;
+    z-index: 10;
+    margin-top: -80px;
+}
+
+.moon-wrapper {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin-bottom: 2rem;
+}
+
+.moon-wrapper:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.moon {
+    width: 200px;
+    height: 200px;
+    background: transparent;
+    border-radius: 50%;
+    /* Creating a crescent using a thick box-shadow */
+    box-shadow: 40px -10px 0 0 var(--light-gold);
+    position: relative;
+    transform: rotate(15deg) translateX(-40px);
+    /* Center the crescent */
+    filter: drop-shadow(0 0 30px rgba(255, 249, 196, 0.4));
+}
+
+.moon::before {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    box-shadow: inset 20px -5px 20px rgba(255, 255, 255, 0.2);
+    left: 40px;
+    top: -10px;
+}
+
+.moon-glow {
+    position: absolute;
+    top: -30px;
+    left: 20px;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 235, 59, 0.3) 0%, transparent 70%);
+    animation: pulse 2.5s infinite alternate;
+    pointer-events: none;
+}
+
+.hint {
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    letter-spacing: 3px;
+    color: var(--primary-gold);
+    text-transform: uppercase;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 235, 59, 0.5);
+    animation: blink 1.5s infinite;
+}
+
+.intro-text h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 5.5rem;
+    background: linear-gradient(to bottom, #fff, var(--vibrant-gold), #ff8f00);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 1));
+    margin-bottom: 0.5rem;
+}
+
+.intro-text h2 {
+    font-weight: 300;
+    font-size: 1.8rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--light-gold);
+    opacity: 0.9;
+}
+
+.stylish-sub {
+    font-size: 3.5rem !important;
+    margin-top: -1rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+/* Surprise Layer & Container */
+.surprise-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* Changed from center to allow manual top control */
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transition: opacity 1s ease;
+    padding-top: 80px;
+    /* Safe margin from the top */
+}
+
+.surprise-container {
+    text-align: center;
+    padding: 2rem;
+    max-width: 800px;
+}
+
+.typing-heading {
+    font-family: 'Great Vibes', cursive;
+    font-size: 5rem;
+    background: linear-gradient(to right, #fff, var(--vibrant-gold), #fff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 1));
+    margin-bottom: 2rem;
+    min-height: 6rem;
+}
+
+.typing-wish {
+    font-size: 1.8rem;
+    color: var(--light-gold);
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    min-height: 8rem;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    font-style: italic;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Typing Cursor Effect */
+.typing::after {
+    content: '|';
+    animation: blinkCursor 0.7s infinite;
+    color: var(--vibrant-gold);
+}
+
+@keyframes blinkCursor {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Gift Reveal */
+.gift-reveal {
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gift-reveal.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.flower-bouquet-img {
+    width: 280px;
+    height: 280px;
+    object-fit: contain;
+    border-radius: 50%;
+    border: 4px solid var(--vibrant-gold);
+    box-shadow: 0 0 50px rgba(255, 193, 7, 0.6);
+    margin-bottom: 2rem;
+    animation: floating 3s infinite ease-in-out;
+}
+
+.gift-subtext {
+    font-size: 2rem;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-shadow: 0 0 10px var(--vibrant-gold);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease 0.5s;
+}
+
+.gift-reveal.show .gift-subtext {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.from-text {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.8rem;
+    color: var(--vibrant-gold);
+    text-shadow: 0 0 15px rgba(255, 193, 7, 0.6);
+    margin-bottom: 2rem;
+    transform: rotate(-5deg);
+    opacity: 1;
+    white-space: normal;
+    animation: glowText 2s infinite alternate;
+    max-width: 600px;
+    line-height: 1.2;
+}
+
+@keyframes glowText {
+    from {
+        text-shadow: 0 0 10px var(--vibrant-gold);
+    }
+
+    to {
+        text-shadow: 0 0 25px #fff, 0 0 35px var(--vibrant-gold);
+    }
+}
+
+.gift-reveal.show .from-text {
+    opacity: 1;
+}
+
+@keyframes floating {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Legacy Support & General Animations */
+.fade-in {
+    animation: fadeIn 2s ease forwards;
+    opacity: 0;
+}
+
+.delays-1 {
+    animation-delay: 0.8s;
+}
+
+.delays-2 {
+    animation-delay: 1.6s;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+
+    to {
+        transform: scale(1.15);
+        opacity: 0.7;
+    }
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
